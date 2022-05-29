@@ -1,0 +1,96 @@
+{% load static %}
+
+<!doctype html>
+
+<html>
+<head>
+	<title>Home Page</title>
+	<link  href="{% static 'CSS/style.css' %}" rel="stylesheet" type="text/css">
+
+  </style>
+</head>
+
+
+<body style="padding: 0;
+margin: 0;">   
+
+
+	<!-- file drop start -->
+  <div >
+    <img  src="{% static 'images/Hero-11.png' %}" style="width:100%;margin-bottom: 1.5em;">
+  </div>
+
+	<div class="modal-content ">
+
+    <form action="" method="POST" enctype="multipart/form-data">
+
+      {% csrf_token %}
+
+      <i class="fas fa-cloud-upload-alt"></i>
+      
+      <input type="file" title="search image" id="file" name="photo"  onchange="show(this)" />
+      <div class="image">
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+      <div class="Sliders" style="display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;">
+        <img src="{% static 'images/img-placeholder-10.png' %}" alt="" id="user_img" width="100" height="100" >
+        
+        
+        <button class="uploadBtn"  button1  onclick="time();analyse();" id="toggle"  >Upload</button>
+        
+      </div>
+      
+                    
+    
+      <div class="progress" style="display:none;" id="third">
+        <div class="color"></div>
+      </div>
+      
+     </form>
+     
+  
+	<!-- file drop end -->
+</body>
+
+<script>
+
+  function show(input) {
+
+    var validExtensions = ['jpg','png','jpeg']; //array of valid extensions
+    var fileName = input.files[0].name;
+    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+  
+    if (input.files && input.files[0]) {
+        var filerdr = new FileReader();
+        filerdr.onload = function (e) {
+            $('#user_img').attr('src', e.target.result);
+        }
+        filerdr.readAsDataURL(input.files[0]);
+      }
+    }
+
+</script>
+
+
+<script>
+let timeout;
+
+function time() {
+  timeout = setTimeout(showDiv(), 4000);
+}
+
+function showDiv() {
+  document.getElementById('third').style.display = "block";
+}
+
+function analyse() {
+    window.location.href = 'analyse.html';
+}
+
+</script> 
+
+</html>
+

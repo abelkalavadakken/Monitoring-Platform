@@ -1,0 +1,49 @@
+{% load static %}
+
+<!doctype html>
+
+<html>
+<head>
+	<title>Home Page</title>
+	<link  href="{% static 'CSS/style.css' %}" rel="stylesheet" type="text/css">
+
+  </style>
+</head>
+
+
+<body style="padding: 0;
+margin: 0;">   
+
+
+	<!-- file drop start -->
+  <div >
+    <img  src="{% static 'images/Hero-11.png' %}" style="width:100%;margin-bottom: 1.5em;">
+  </div>
+
+<!-- navbar end	 -->
+
+
+<div style="display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;">
+
+{% comment %} {%if prediction==0%}
+<img  src="{% static 'images/meter-01.png' %}" style="width:15em; margin-top: 4em; margin-bottom: 1.5em;">
+{%elif prediction==1%}
+<img  src="{% static 'images/meter-02.png' %}" style="width:15em; margin-top: 4em; margin-bottom: 1.5em;">
+{% endif %} {% endcomment %}
+
+<img  src="{% static path %}" style="width:22em; margin-top: 4em; margin-bottom: 1.5em;">
+
+<button class="uploadBtn"  onclick="analyse()" id="toggle"  >Check Another Result</button>
+ </div>
+</body>
+<script type="text/javascript">
+	function analyse() {
+    window.location.href = 'home.html';
+}
+</script>
+
+</html>
+
